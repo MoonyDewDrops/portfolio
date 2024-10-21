@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "portfolios",
+  "info": {
+    "singularName": "portfolio",
+    "pluralName": "portfolios",
+    "displayName": "Portfolio",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nameTitle": {
+      "type": "string"
+    },
+    "headerNames": {
+      "type": "component",
+      "repeatable": true,
+      "component": "header.header-names"
+    },
+    "welkom": {
+      "type": "text"
+    },
+    "welkomDescription": {
+      "type": "text"
+    },
+    "officialThingie": {
+      "type": "string"
+    },
+    "headerImages": {
+      "type": "component",
+      "repeatable": false,
+      "component": "header.header-images"
+    },
+    "backgroundImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "headerStar": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

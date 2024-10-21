@@ -1,13 +1,19 @@
+import Link from 'next/link';
+
 export default function Header() {
     return (
       <header style={headerStyle}>
-        <h1 style={{ color: "white" }}>Julia Brouwer</h1>
+        <h1 style={{ color: "white" }}>
+          <span style={squareSpanStyle}>
+            Julia Brouwer
+          </span>
+        </h1>
         <nav>
           <ul style={navListStyle}>
-            <li><a href="/" style={linkStyle}>Home</a></li>
-            <li><a href="/about" style={linkStyle}>Over mij</a></li>
-            <li><a href="/projects" style={linkStyle}>Eerdere projecten</a></li>
-            <li><a href="/contact" style={linkStyle}>Contact</a></li>
+            <li><Link href="/" style={linkStyle}><span style={squareSpanStyle}>Home</span></Link></li>
+            <li><Link href="/about" style={linkStyle}><span style={squareSpanStyle}>Over mij</span></Link></li>
+            <li><Link href="/projects" style={linkStyle}><span style={squareSpanStyle}>Mijn werk</span></Link></li>
+            <li><Link href="/contact" style={linkStyle}><span style={squareSpanStyle}>Contact</span></Link></li>
           </ul>
         </nav>
       </header>
@@ -32,4 +38,9 @@ export default function Header() {
     color: "white",
     textDecoration: "none",
   };
-  
+
+const squareSpanStyle = {
+  backgroundColor: "#8D99AE", // The color for the square
+  padding: "0.7rem", // Padding to simulate the size of the square
+  borderRadius: "5px", // Optional: Add rounded corners to the square
+};

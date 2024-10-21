@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_header_header_names",
+  "info": {
+    "displayName": "headerNames",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "Home": {
+      "type": "string"
+    },
+    "Overmij": {
+      "type": "string"
+    },
+    "Mijnwerk": {
+      "type": "string"
+    },
+    "Contact": {
+      "type": "string"
+    }
+  }
+}

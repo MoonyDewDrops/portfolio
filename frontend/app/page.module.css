@@ -165,22 +165,58 @@ a.secondary {
 }
 
 .imageGallery {
-  display: flex;                /* Use flexbox for horizontal layout */
-  justify-content: center;      /* Center the images horizontally */
-  gap: 50px;                   /* Space between images */
-  margin-top: 20px;            /* Space above the gallery */
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  position: relative;
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  position: relative;  
+  gap: 5%;
+  transition: transform 0.3s;
 }
 
 .portfolioImage {
-  width: 25%;                /* Set a specific width */
-  height: auto;                /* Maintain aspect ratio */
-  border-radius: 10px;         /* Rounded corners */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  transition: transform 0.3s;  /* Smooth scaling effect */
+  width: 60%;
+  height: 85%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-.portfolioImage:hover {
-  transform: scale(0.9);      /* Slightly scale image on hover */
+.imageText {
+  background-color: #8D99AE;
+  padding: 0.7rem;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+  color: #EDF2F4;
+  font-size: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.imageContainer:hover {
+  transform: scale(0.9);
+}
+
+.imageContainer:hover .imageText {
+  background-color: #5C6784;
+  color: #EDF2F4;
+}
+
+.imageGallery a:nth-child(1),
+.imageGallery a:nth-child(3) {
+  transform: translateY(5%);
+}
+
+.imageGallery a:nth-child(1):hover,
+.imageGallery a:nth-child(3):hover {
+  transform: scale(0.9) translateY(5%);
 }
 
 
