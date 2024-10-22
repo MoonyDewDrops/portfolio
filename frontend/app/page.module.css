@@ -169,6 +169,7 @@ a.secondary {
   justify-content: center;
   margin-top: 20px;
   position: relative;
+  gap: 15%;
 }
 
 .imageContainer {
@@ -187,6 +188,21 @@ a.secondary {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+}
+
+.firstImage{
+  width: 150px;
+  height: auto;
+}
+
+.secondImage{
+  width: 150px;
+  height: auto;
+}
+
+.thirdImage{
+  width: 150px;
+  height: auto;
 }
 
 .imageText {

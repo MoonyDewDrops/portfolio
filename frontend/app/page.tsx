@@ -1,27 +1,62 @@
-"use client";
+"use client"; // Add this line to mark the component as a Client Component
 
 import styles from "./page.module.css";
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import axios from "axios";
+import { useEffect, useState } from "react";
 
+// Define the interface for homepage data
 interface HomePageData {
   welkom: string;
   welkomDescription: string;
+  headerImages: {
+    overMij: {
+      url: string;
+    } | null;
+    mijnWerk: {
+      url: string;
+    } | null;
+    contact: {
+      url: string;
+    } | null;
+  };
+  headerNames: {
+    home: string;
+    overMij: string;
+    mijnWerk: string;
+    contact: string;
+  };
 }
 
 export default function Home() {
-  const [homeData, setHomeData] = useState<HomePageData | null>(null);
+  const [homeData, setHomeData] = useState<HomePageData | null>(null); // State to hold the homepage data
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null); // State for error handling
 
   useEffect(() => {
     const fetchHomeData = async () => {
       try {
-        const response = await axios.get('http://localhost:1337/api/homepages');
-        setHomeData(response.data.data[0]);
+        const response = await axios.get(
+          "http://localhost:1337/api/homepages?populate[headerImages][populate]=*&populate=headerNames"
+        );
+        const fetchedData = response.data.data[0]; // Access the first item in the array
+        setHomeData({
+          welkom: fetchedData.welkom,
+          welkomDescription: fetchedData.welkomDescription,
+          headerImages: {
+            overMij: fetchedData.headerImages?.overMij || null,
+            mijnWerk: fetchedData.headerImages?.mijnWerk || null,
+            contact: fetchedData.headerImages?.contact || null,
+          },
+          headerNames: {
+            home: fetchedData.headerNames?.home || "Home",
+            overMij: fetchedData.headerNames?.overMij || "Over mij",
+            mijnWerk: fetchedData.headerNames?.mijnWerk || "Mijn werk",
+            contact: fetchedData.headerNames?.contact || "Contact",
+          },
+        });
       } catch (error) {
-        console.error('Error fetching homepage data:', error);
-        setError('Error loading homepage data');
+        console.error("Error fetching homepage data:", error);
+        setError("Error loading homepage data");
       } finally {
         setLoading(false);
       }
@@ -38,11 +73,12 @@ export default function Home() {
     return <div>{error}</div>;
   }
 
+  // Check if homeData is defined
   if (!homeData) {
     return <div>Homepage data is missing or unavailable</div>;
   }
 
-  const { welkom, welkomDescription } = homeData;
+  const { welkom, welkomDescription, headerImages, headerNames } = homeData;
 
   return (
     <div className={styles.page}>
@@ -58,16 +94,28 @@ export default function Home() {
 
         <div className={styles.imageGallery}>
           <a href="/" className={styles.imageContainer}>
-            <img src="https://i.pinimg.com/736x/31/35/bf/3135bf339e5692cb3e09c28197cf0b96.jpg" alt="pic of me" className={styles.portfolioImage} />
-            <div className={styles.imageText}>Over mij</div>
+            <img
+              src={headerImages?.overMij?.url ? `http://localhost:1337${headerImages.overMij.url}` : "/fallback-image.jpg"}
+              alt={headerNames.overMij}
+              className={styles.portfolioImage&&styles.firstImage}
+            />
+            <div className={styles.imageText}>{headerNames.overMij}</div>
           </a>
           <a href="/projects" className={styles.imageContainer}>
-            <img src="https://i.pinimg.com/736x/59/41/61/594161f55a944ca653f35240be6e28c4.jpg" alt="pic of my work" className={styles.portfolioImage} />
-            <div className={styles.imageText}>Mijn werk</div>
+            <img
+              src={headerImages?.mijnWerk?.url ? `http://localhost:1337${headerImages.mijnWerk.url}` : "/fallback-image.jpg"}
+              alt={headerNames.mijnWerk}
+              className={styles.portfolioImage&&styles.secondImage}
+            />
+            <div className={styles.imageText}>{headerNames.mijnWerk}</div>
           </a>
           <a href="/contact" className={styles.imageContainer}>
-            <img src="https://i.pinimg.com/736x/da/d7/2c/dad72c3ee7ea255e72acc32681ec35e2.jpg" alt="another pic of my work" className={styles.portfolioImage} />
-            <div className={styles.imageText}>Contact</div>
+            <img
+              src={headerImages?.contact?.url ? `http://localhost:1337${headerImages.contact.url}` : "/fallback-image.jpg"}
+              alt={headerNames.contact}
+              className={styles.portfolioImage&&styles.thirdImage}
+            />
+            <div className={styles.imageText}>{headerNames.contact}</div>
           </a>
         </div>
       </main>
