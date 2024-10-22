@@ -72,7 +72,7 @@ export default function Header() {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/about" style={linkStyle}>
+                        <Link href="/aboutMe" style={linkStyle}>
                             <span style={squareSpanStyle}>{headerNames?.Overmij}</span>
                         </Link>
                     </li>
@@ -103,14 +103,14 @@ const headerStyle: React.CSSProperties = {
 
 const starContainerStyle: React.CSSProperties = {
     margin: "1rem 0",
-    display: "flex", 
-    justifyContent: "center", 
-    flex: "1", 
+    display: "flex",
+    justifyContent: "center",
+    flex: "1",
 };
 
 const starImageStyle: React.CSSProperties = {
     marginBottom: "1rem",
-    width: "10%", 
+    width: "10%",
     height: "20%",
 };
 

@@ -93,7 +93,7 @@ export default function Home() {
         </ul>
 
         <div className={styles.imageGallery}>
-          <a href="/" className={styles.imageContainer}>
+          <a href="/aboutMe" className={styles.imageContainer}>
             <img
               src={headerImages?.overMij?.url ? `http://localhost:1337${headerImages.overMij.url}` : "/fallback-image.jpg"}
               alt={headerNames.overMij}
