@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "homepages",
+  "info": {
+    "singularName": "homepage",
+    "pluralName": "homepages",
+    "displayName": "homepage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "welkom": {
+      "type": "string"
+    },
+    "welkomDescription": {
+      "type": "text"
+    },
+    "headerImages": {
+      "type": "component",
+      "repeatable": false,
+      "component": "header.header-images"
+    },
+    "headerNames": {
+      "type": "component",
+      "repeatable": false,
+      "component": "header.header-names"
+    }
+  }
+}

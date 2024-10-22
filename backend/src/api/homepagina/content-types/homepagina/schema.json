@@ -1,0 +1,42 @@
+{
+  "kind": "singleType",
+  "collectionName": "homepaginas",
+  "info": {
+    "singularName": "homepagina",
+    "pluralName": "homepaginas",
+    "displayName": "homepagina",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "welkom": {
+      "type": "string"
+    },
+    "welkomDescription": {
+      "type": "text"
+    },
+    "headerImages": {
+      "type": "component",
+      "repeatable": false,
+      "component": "header.header-images"
+    },
+    "headerNames": {
+      "type": "component",
+      "repeatable": false,
+      "component": "header.header-names"
+    },
+    "backgroundImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
