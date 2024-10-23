@@ -39,7 +39,7 @@ export default function Header() {
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div></div>;
     }
 
     if (error) {
@@ -47,7 +47,7 @@ export default function Header() {
     }
 
     if (!headerData || !headerData.headerNames) {
-        return <div>Header data is missing or unavailable</div>;
+        return <div>Header data is missend of onkrijgbaar</div>;
     }
 
     const { title, headerNames, headerStar } = headerData;
@@ -55,9 +55,12 @@ export default function Header() {
     return (
         <header style={headerStyle}>
             <h1 style={{ color: "white" }}>
-                <span style={squareSpanStyle}>
-                    {title}
-                </span>
+                <a href='/'>
+                    <span style={squareSpanStyle}>
+                        {title}
+                    </span>
+                </a>
+
             </h1>
             <div style={starContainerStyle}>
                 {headerStar && (
@@ -109,9 +112,8 @@ const starContainerStyle: React.CSSProperties = {
 };
 
 const starImageStyle: React.CSSProperties = {
-    marginBottom: "1rem",
-    width: "10%",
-    height: "20%",
+    width: "50px",
+    height: "50px",
 };
 
 const navListStyle: React.CSSProperties = {

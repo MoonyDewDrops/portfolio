@@ -1,10 +1,9 @@
-"use client"; // Add this line to mark the component as a Client Component
+"use client";
 
 import styles from "./page.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-// Define the interface for homepage data
 interface HomePageData {
   welkom: string;
   welkomDescription: string;
@@ -38,7 +37,7 @@ export default function Home() {
         const response = await axios.get(
           "http://localhost:1337/api/homepages?populate[headerImages][populate]=*&populate=headerNames"
         );
-        const fetchedData = response.data.data[0]; // Access the first item in the array
+        const fetchedData = response.data.data[0];
         setHomeData({
           welkom: fetchedData.welkom,
           welkomDescription: fetchedData.welkomDescription,
@@ -66,14 +65,18 @@ export default function Home() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+        <div className={styles.container}>
+          Loading...
+          <div className={styles.spinner}></div>
+        </div>
+    )
   }
 
   if (error) {
     return <div>{error}</div>;
   }
 
-  // Check if homeData is defined
   if (!homeData) {
     return <div>Homepage data is missing or unavailable</div>;
   }

@@ -25,7 +25,7 @@ export default function Footer() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   if (error) {
@@ -33,7 +33,7 @@ export default function Footer() {
   }
 
   if (!footerData) {
-    return <div>Footer data is missing or unavailable</div>;
+    return <div>footer data is missend of onkrijgbaar</div>;
   }
 
 
