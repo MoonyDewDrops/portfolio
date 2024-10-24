@@ -2,7 +2,14 @@
 import Image from 'next/image';
 import styles from "../page.module.css";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useEffect, useState } from "react";
+
+interface Child {
+  type: string;
+  text: string;
+  url?: string;
+  [key: string]: any;
+}
 
 interface ProjectData {
   projectImages: {
@@ -11,9 +18,9 @@ interface ProjectData {
     image3: { url: string };
   };
   info: {
-    info1: Array<{ type: string; children: Array<{ type: string; text: string; url?: string }> }>;
-    info2: Array<{ type: string; children: Array<{ type: string; text: string; url?: string }> }>;
-    info3: Array<{ type: string; children: Array<{ type: string; text: string; url?: string }> }>;
+    info1: Array<{ type: string; children: Child[] }>;
+    info2: Array<{ type: string; children: Child[] }>;
+    info3: Array<{ type: string; children: Child[] }>;
   };
   dateStarted: {
     dateMade1: string | null;
@@ -85,19 +92,18 @@ export default function Projects() {
 
   const { projectImages, info, dateStarted, dateFinished, live } = projectData;
 
-  //doing the thing for rich text
-  const renderRichText = (infoArray: Array<{ type: string; children: Array<{
-    [x: string]: any; type: string; text: string; url?: string 
-}> }>) => {
+  const renderRichText = (infoArray: Array<{ type: string; children: Child[] }>) => {
     return infoArray.map((paragraph, index) => (
-      <p key={index}>
+      <div key={index}>
         {paragraph.children.map((child, childIndex) => {
           const textStyle = { color: '#000000' }; //the colour of the link teehee
           
           if (child.type === 'link' && child.url) {
             return (
               <a key={childIndex} href={child.url} target="_blank" rel="noopener noreferrer" style={textStyle}>
-                {child.children[0]?.text}
+                {child.children.map((linkChild: { text: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; }, linkChildIndex: Key | null | undefined) => (
+                  <span key={linkChildIndex}>{linkChild.text}</span>
+                ))}
               </a>
             );
           }
@@ -107,7 +113,8 @@ export default function Projects() {
             </span>
           );
         })}
-      </p>
+        <br></br>
+      </div>
     ));
   };
 
