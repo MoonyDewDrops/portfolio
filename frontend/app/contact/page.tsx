@@ -15,7 +15,7 @@ interface ContactData {
   }
 }
 
-export default function contact() {
+export default function Contact() {
   const [ContactData, setContactData] = useState<ContactData | null>(null); // State to hold the project data
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null); // State for error handling

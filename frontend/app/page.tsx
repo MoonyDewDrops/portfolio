@@ -3,6 +3,7 @@
 import styles from "./page.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Image from 'next/image';
 
 interface HomePageData {
   welkom: string;
@@ -97,26 +98,32 @@ export default function Home() {
 
         <div className={styles.imageGallery}>
           <a href="/aboutMe" className={styles.imageContainer}>
-            <img
+            <Image
               src={headerImages?.overMij?.url ? `http://localhost:1337${headerImages.overMij.url}` : "/fallback-image.jpg"}
               alt={headerNames.overMij}
-              className={styles.portfolioImage&&styles.firstImage}
+              className={`${styles.portfolioImage} ${styles.firstImage}`}
+              width={500}
+              height={300}
             />
             <div className={styles.imageText}>{headerNames.overMij}</div>
           </a>
           <a href="/projects" className={styles.imageContainer}>
-            <img
+            <Image
               src={headerImages?.mijnWerk?.url ? `http://localhost:1337${headerImages.mijnWerk.url}` : "/fallback-image.jpg"}
               alt={headerNames.mijnWerk}
-              className={styles.portfolioImage&&styles.secondImage}
+              className={`${styles.portfolioImage} ${styles.secondImage}`}
+              width={500}
+              height={300}
             />
             <div className={styles.imageText}>{headerNames.mijnWerk}</div>
           </a>
           <a href="/contact" className={styles.imageContainer}>
-            <img
+            <Image
               src={headerImages?.contact?.url ? `http://localhost:1337${headerImages.contact.url}` : "/fallback-image.jpg"}
               alt={headerNames.contact}
-              className={styles.portfolioImage&&styles.thirdImage}
+              className={`${styles.portfolioImage} ${styles.thirdImage}`}
+              width={500}
+              height={300}
             />
             <div className={styles.imageText}>{headerNames.contact}</div>
           </a>

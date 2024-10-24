@@ -1,5 +1,5 @@
 "use client";
-
+import Image from 'next/image';
 import styles from "../page.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -85,14 +85,14 @@ export default function Projects() {
 
   const { projectImages, info, dateStarted, dateFinished, live } = projectData;
 
-  // Function to convert rich text structure to HTML
+  //doing the thing for rich text
   const renderRichText = (infoArray: Array<{ type: string; children: Array<{
     [x: string]: any; type: string; text: string; url?: string 
 }> }>) => {
     return infoArray.map((paragraph, index) => (
       <p key={index}>
         {paragraph.children.map((child, childIndex) => {
-          const textStyle = { color: '#000000' }; // Change this to your desired color
+          const textStyle = { color: '#000000' }; //the colour of the link teehee
           
           if (child.type === 'link' && child.url) {
             return (
@@ -120,7 +120,14 @@ export default function Projects() {
         <div style={containerStyles}>
           <div style={imageSection}>
             <div style={imageContainerStyles}>
-              <img src={projectImages.image1?.url ? `http://localhost:1337${projectImages.image1.url}` : "/fallback-image.jpg"} alt="Image 1" style={imageStyles} />
+              <Image
+                src={projectImages.image1?.url ? `http://localhost:1337${projectImages.image1.url}` : "/fallback-image.jpg"}
+                alt="Image 1"
+                layout="responsive"
+                width={500}
+                height={300} 
+                style={imageStyles}
+              />
               <div style={labelStyles}>Project 1</div>
               {live && live.live1 ? <div style={liveIndicator}>Live</div> : <div style={notLiveIndicator}>Niet Live</div>}
             </div>
@@ -147,7 +154,14 @@ export default function Projects() {
           </div>
           <div style={imageSection}>
             <div style={imageContainerStyles}>
-              <img src={projectImages.image2?.url ? `http://localhost:1337${projectImages.image2.url}` : "/fallback-image.jpg"} alt="Image 2" style={imageStyles} />
+              <Image
+                src={projectImages.image2?.url ? `http://localhost:1337${projectImages.image2.url}` : "/fallback-image.jpg"}
+                alt="Image 2"
+                layout="responsive"
+                width={500}
+                height={300}
+                style={imageStyles}
+              />
               <div style={labelStyles}>Project 2</div>
               {live && live.live2 ? <div style={liveIndicator}>Live</div> : <div style={notLiveIndicator}>Niet Live</div>}
             </div>
@@ -158,7 +172,14 @@ export default function Projects() {
         <div style={containerStyles}>
           <div style={imageSection}>
             <div style={imageContainerStyles}>
-              <img src={projectImages.image3?.url ? `http://localhost:1337${projectImages.image3.url}` : "/fallback-image.jpg"} alt="Image 3" style={imageStyles} />
+              <Image
+                src={projectImages.image3?.url ? `http://localhost:1337${projectImages.image3.url}` : "/fallback-image.jpg"}
+                alt="Image 3"
+                layout="responsive"
+                width={500}
+                height={300}
+                style={imageStyles}
+              />
               <div style={labelStyles}>Project 3</div>
               {live && live.live3 ? <div style={liveIndicator}>Live</div> : <div style={notLiveIndicator}>Niet Live</div>}
             </div>

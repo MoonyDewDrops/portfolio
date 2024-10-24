@@ -3,6 +3,7 @@
 import axios from 'axios';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 interface HeaderData {
     title: string;
@@ -64,7 +65,13 @@ export default function Header() {
             </h1>
             <div style={starContainerStyle}>
                 {headerStar && (
-                    <img src={`http://localhost:1337${headerStar.url}`} alt="Star" style={starImageStyle} />
+                    <Image
+                        src={`http://localhost:1337${headerStar.url}`} 
+                        alt="Star"
+                        width={50}
+                        height={50}
+                        style={starImageStyle}
+                    />
                 )}
             </div>
             <nav>

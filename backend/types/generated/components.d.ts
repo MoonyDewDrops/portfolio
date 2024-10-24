@@ -64,6 +64,29 @@ export interface ProjectPageDateFinished extends Struct.ComponentSchema {
   };
 }
 
+export interface ContactPageNames extends Struct.ComponentSchema {
+  collectionName: 'components_contact_page_names';
+  info: {
+    displayName: 'names';
+    description: '';
+  };
+  attributes: {
+    name1: Schema.Attribute.String;
+    name2: Schema.Attribute.String;
+  };
+}
+
+export interface ContactPageLinks extends Struct.ComponentSchema {
+  collectionName: 'components_contact_page_links';
+  info: {
+    displayName: 'links';
+  };
+  attributes: {
+    link1: Schema.Attribute.String;
+    link2: Schema.Attribute.String;
+  };
+}
+
 export interface HeaderHeaderNames extends Struct.ComponentSchema {
   collectionName: 'components_header_header_names';
   info: {
@@ -90,29 +113,6 @@ export interface HeaderHeaderImages extends Struct.ComponentSchema {
   };
 }
 
-export interface ContactPageNames extends Struct.ComponentSchema {
-  collectionName: 'components_contact_page_names';
-  info: {
-    displayName: 'names';
-    description: '';
-  };
-  attributes: {
-    name1: Schema.Attribute.String;
-    name2: Schema.Attribute.String;
-  };
-}
-
-export interface ContactPageLinks extends Struct.ComponentSchema {
-  collectionName: 'components_contact_page_links';
-  info: {
-    displayName: 'links';
-  };
-  attributes: {
-    link1: Schema.Attribute.String;
-    link2: Schema.Attribute.String;
-  };
-}
-
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -121,10 +121,10 @@ declare module '@strapi/strapi' {
       'project-page.finished': ProjectPageFinished;
       'project-page.date-made': ProjectPageDateMade;
       'project-page.date-finished': ProjectPageDateFinished;
-      'header.header-names': HeaderHeaderNames;
-      'header.header-images': HeaderHeaderImages;
       'contact-page.names': ContactPageNames;
       'contact-page.links': ContactPageLinks;
+      'header.header-names': HeaderHeaderNames;
+      'header.header-images': HeaderHeaderImages;
     }
   }
 }

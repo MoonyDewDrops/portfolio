@@ -2,6 +2,7 @@
 
 import styles from "../page.module.css";
 import axios from "axios";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface AboutMeData {
@@ -49,10 +50,10 @@ export default function Home() {
   if (loading) {
     return (
       <div className={styles.container}>
-      Loading...
-      <div className={styles.spinner}></div>
-    </div>
-    )
+        Loading...
+        <div className={styles.spinner}></div>
+      </div>
+    );
   }
 
   if (error) {
@@ -71,10 +72,12 @@ export default function Home() {
 
         <div style={aboutMeContainer}>
           <div style={aboutMeImage}>
-            <img
+            <Image
               src={image?.url ? `http://localhost:1337${image.url}` : "/fallback-image.jpg"}
-              alt={image?.url}
+              alt={name}
               style={overMij}
+              width={500}
+              height={500}
             />
             <div style={imageName}>{name}</div>
           </div>

@@ -58,12 +58,6 @@ const footerStyle = {
   alignItems: "center",
 };
 
-const footerListStyle = {
-  listStyle: "none",
-  display: "flex",
-  gap: "1rem",
-};
-
 const linkStyle = {
   color: "white",
   textDecoration: "none",
