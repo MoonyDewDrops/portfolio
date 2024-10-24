@@ -2,13 +2,13 @@
 import Image from 'next/image';
 import styles from "../page.module.css";
 import axios from "axios";
-import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Child {
   type: string;
-  text: string;
+  text?: string;
   url?: string;
-  [key: string]: any;
+  children?: Child[];
 }
 
 interface ProjectData {
@@ -56,7 +56,7 @@ export default function Projects() {
         }
 
         setProjectData({
-          projectImages: fetchedData.projectImages || [],
+          projectImages: fetchedData.projectImages || { image1: { url: "" }, image2: { url: "" }, image3: { url: "" } },
           info: fetchedData.info || {
             info1: [],
             info2: [],
@@ -101,7 +101,7 @@ export default function Projects() {
           if (child.type === 'link' && child.url) {
             return (
               <a key={childIndex} href={child.url} target="_blank" rel="noopener noreferrer" style={textStyle}>
-                {child.children.map((linkChild: { text: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; }, linkChildIndex: Key | null | undefined) => (
+                {child.children?.map((linkChild, linkChildIndex) => (
                   <span key={linkChildIndex}>{linkChild.text}</span>
                 ))}
               </a>
