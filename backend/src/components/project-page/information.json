@@ -1,18 +1,19 @@
 {
   "collectionName": "components_project_page_information",
   "info": {
-    "displayName": "information"
+    "displayName": "information",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "info1": {
-      "type": "text"
+      "type": "blocks"
     },
     "info2": {
-      "type": "text"
+      "type": "blocks"
     },
     "info3": {
-      "type": "text"
+      "type": "blocks"
     }
   }
 }

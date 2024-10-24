@@ -15,12 +15,32 @@
     "projectImages": {
       "type": "component",
       "repeatable": false,
-      "component": "project-page.images"
+      "component": "project-page.images",
+      "required": true
     },
     "info": {
       "type": "component",
       "repeatable": false,
-      "component": "project-page.information"
+      "component": "project-page.information",
+      "required": true
+    },
+    "dateStarted": {
+      "type": "component",
+      "repeatable": false,
+      "component": "project-page.date-made",
+      "required": true
+    },
+    "dateFinished": {
+      "type": "component",
+      "repeatable": false,
+      "component": "project-page.date-finished",
+      "required": true
+    },
+    "live": {
+      "type": "component",
+      "repeatable": false,
+      "component": "project-page.finished",
+      "required": true
     }
   }
 }

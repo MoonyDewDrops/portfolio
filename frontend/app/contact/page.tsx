@@ -8,16 +8,14 @@ interface ContactData {
   "names": {
     "name1": string,
     "name2": string,
-    "name3": null,
   },
   "linked": {
     "link1": string,
     "link2": string,
-    "link3": null,
   }
 }
 
-export default function Projects() {
+export default function contact() {
   const [ContactData, setContactData] = useState<ContactData | null>(null); // State to hold the project data
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null); // State for error handling
@@ -69,8 +67,6 @@ export default function Projects() {
     <div className={styles.page}>
       <main className={styles.main}>
         <h1>Contact</h1>
-
-        {/* Single container to hold both sections */}
         <div style={containerStyles}>
           <div style={infoSection}>
             <div style={infoContainerStyles}>

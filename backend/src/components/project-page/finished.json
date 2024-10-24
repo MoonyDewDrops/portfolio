@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_project_page_finisheds",
+  "info": {
+    "displayName": "finished",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "live1": {
+      "type": "boolean"
+    },
+    "live2": {
+      "type": "boolean"
+    },
+    "live3": {
+      "type": "boolean"
+    }
+  }
+}

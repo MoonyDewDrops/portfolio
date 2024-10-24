@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_project_page_date_mades",
+  "info": {
+    "displayName": "dateMade",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "dateMade1": {
+      "type": "date"
+    },
+    "dateMade2": {
+      "type": "date"
+    },
+    "dateMade3": {
+      "type": "date"
+    }
+  }
+}

@@ -542,7 +542,7 @@ export interface ApiContactContact extends Struct.CollectionTypeSchema {
   };
   attributes: {
     names: Schema.Attribute.Component<'contact-page.names', false>;
-    linked: Schema.Attribute.Component<'project-page.linking', false>;
+    linked: Schema.Attribute.Component<'contact-page.links', false>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -739,8 +739,19 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    projectImages: Schema.Attribute.Component<'project-page.images', false>;
-    info: Schema.Attribute.Component<'project-page.information', false>;
+    projectImages: Schema.Attribute.Component<'project-page.images', false> &
+      Schema.Attribute.Required;
+    info: Schema.Attribute.Component<'project-page.information', false> &
+      Schema.Attribute.Required;
+    dateStarted: Schema.Attribute.Component<'project-page.date-made', false> &
+      Schema.Attribute.Required;
+    dateFinished: Schema.Attribute.Component<
+      'project-page.date-finished',
+      false
+    > &
+      Schema.Attribute.Required;
+    live: Schema.Attribute.Component<'project-page.finished', false> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

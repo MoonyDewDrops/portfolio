@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_project_page_linkings",
+  "collectionName": "components_contact_page_links",
   "info": {
-    "displayName": "linking"
+    "displayName": "links"
   },
   "options": {},
   "attributes": {
@@ -9,9 +9,6 @@
       "type": "string"
     },
     "link2": {
-      "type": "string"
-    },
-    "link3": {
       "type": "string"
     }
   }

@@ -19,10 +19,9 @@
       "component": "contact-page.names"
     },
     "linked": {
-      "displayName": "linking",
       "type": "component",
       "repeatable": false,
-      "component": "project-page.linking"
+      "component": "contact-page.links"
     }
   }
 }

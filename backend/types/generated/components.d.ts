@@ -1,38 +1,15 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
-export interface ProjectPageLinks extends Struct.ComponentSchema {
-  collectionName: 'components_project_page_links';
-  info: {
-    displayName: 'Links';
-  };
-  attributes: {
-    link1: Schema.Attribute.String;
-    link2: Schema.Attribute.String;
-    link3: Schema.Attribute.String;
-  };
-}
-
-export interface ProjectPageLinking extends Struct.ComponentSchema {
-  collectionName: 'components_project_page_linkings';
-  info: {
-    displayName: 'linking';
-  };
-  attributes: {
-    link1: Schema.Attribute.String;
-    link2: Schema.Attribute.String;
-    link3: Schema.Attribute.String;
-  };
-}
-
 export interface ProjectPageInformation extends Struct.ComponentSchema {
   collectionName: 'components_project_page_information';
   info: {
     displayName: 'information';
+    description: '';
   };
   attributes: {
-    info1: Schema.Attribute.Text;
-    info2: Schema.Attribute.Text;
-    info3: Schema.Attribute.Text;
+    info1: Schema.Attribute.Blocks;
+    info2: Schema.Attribute.Blocks;
+    info3: Schema.Attribute.Blocks;
   };
 }
 
@@ -46,6 +23,44 @@ export interface ProjectPageImages extends Struct.ComponentSchema {
     image1: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     image2: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     image3: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface ProjectPageFinished extends Struct.ComponentSchema {
+  collectionName: 'components_project_page_finisheds';
+  info: {
+    displayName: 'finished';
+    description: '';
+  };
+  attributes: {
+    live1: Schema.Attribute.Boolean;
+    live2: Schema.Attribute.Boolean;
+    live3: Schema.Attribute.Boolean;
+  };
+}
+
+export interface ProjectPageDateMade extends Struct.ComponentSchema {
+  collectionName: 'components_project_page_date_mades';
+  info: {
+    displayName: 'dateMade';
+    description: '';
+  };
+  attributes: {
+    dateMade1: Schema.Attribute.Date;
+    dateMade2: Schema.Attribute.Date;
+    dateMade3: Schema.Attribute.Date;
+  };
+}
+
+export interface ProjectPageDateFinished extends Struct.ComponentSchema {
+  collectionName: 'components_project_page_date_finisheds';
+  info: {
+    displayName: 'DateFinished';
+  };
+  attributes: {
+    dateFinished1: Schema.Attribute.Date;
+    dateFinished2: Schema.Attribute.Date;
+    dateFinished3: Schema.Attribute.Date;
   };
 }
 
@@ -79,24 +94,37 @@ export interface ContactPageNames extends Struct.ComponentSchema {
   collectionName: 'components_contact_page_names';
   info: {
     displayName: 'names';
+    description: '';
   };
   attributes: {
     name1: Schema.Attribute.String;
     name2: Schema.Attribute.String;
-    name3: Schema.Attribute.String;
+  };
+}
+
+export interface ContactPageLinks extends Struct.ComponentSchema {
+  collectionName: 'components_contact_page_links';
+  info: {
+    displayName: 'links';
+  };
+  attributes: {
+    link1: Schema.Attribute.String;
+    link2: Schema.Attribute.String;
   };
 }
 
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'project-page.links': ProjectPageLinks;
-      'project-page.linking': ProjectPageLinking;
       'project-page.information': ProjectPageInformation;
       'project-page.images': ProjectPageImages;
+      'project-page.finished': ProjectPageFinished;
+      'project-page.date-made': ProjectPageDateMade;
+      'project-page.date-finished': ProjectPageDateFinished;
       'header.header-names': HeaderHeaderNames;
       'header.header-images': HeaderHeaderImages;
       'contact-page.names': ContactPageNames;
+      'contact-page.links': ContactPageLinks;
     }
   }
 }

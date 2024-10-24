@@ -1,7 +1,8 @@
 {
   "collectionName": "components_contact_page_names",
   "info": {
-    "displayName": "names"
+    "displayName": "names",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -9,9 +10,6 @@
       "type": "string"
     },
     "name2": {
-      "type": "string"
-    },
-    "name3": {
       "type": "string"
     }
   }

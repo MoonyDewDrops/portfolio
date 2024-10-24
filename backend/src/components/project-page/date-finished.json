@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_project_page_date_finisheds",
+  "info": {
+    "displayName": "DateFinished"
+  },
+  "options": {},
+  "attributes": {
+    "dateFinished1": {
+      "type": "date"
+    },
+    "dateFinished2": {
+      "type": "date"
+    },
+    "dateFinished3": {
+      "type": "date"
+    }
+  }
+}
