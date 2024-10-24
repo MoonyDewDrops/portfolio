@@ -4,7 +4,12 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 export default function Footer() {
-  const [footerData, setFooterData] = useState<any>(null);
+
+  interface FooterData {
+    officialThingie: string;
+  }
+  
+  const [footerData, setFooterData] = useState<FooterData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -56,11 +61,6 @@ const footerStyle = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-};
-
-const linkStyle = {
-  color: "white",
-  textDecoration: "none",
 };
 
 const squareSpanStyle = {
