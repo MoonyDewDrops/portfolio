@@ -1,9 +1,11 @@
+//next.js (Explain)
 "use client";
 import Image from 'next/image';
 import styles from "../page.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+//strapi (Explain)
 interface Child {
   type: string;
   text?: string;
@@ -11,6 +13,7 @@ interface Child {
   children?: Child[];
 }
 
+//strapi (Explain)
 interface ProjectData {
   projectImages: {
     image1: { url: string };
@@ -39,15 +42,18 @@ interface ProjectData {
   } | null;
 }
 
+//next.js
 export default function Projects() {
   const [projectData, setProjectData] = useState<ProjectData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  //next.js (Explain)
   useEffect(() => {
     const fetchProjectData = async () => {
       setLoading(true);
       try {
+        //strapi (Explain)
         const response = await axios.get("http://localhost:1337/api/projects?populate[projectImages][populate]=*&populate[info][populate]=*&populate[dateStarted][populate]=*&populate[dateFinished][populate]=*&populate[live][populate]=*");
         const fetchedData = response.data.data[0];
 
@@ -55,6 +61,7 @@ export default function Projects() {
           throw new Error("No project data found");
         }
 
+        //strapi (Explain)
         setProjectData({
           projectImages: fetchedData.projectImages || { image1: { url: "" }, image2: { url: "" }, image3: { url: "" } },
           info: fetchedData.info || {
@@ -77,7 +84,7 @@ export default function Projects() {
     fetchProjectData();
   }, []);
 
-
+  //next.js (Explain)
   if (loading) {
     return <div className={styles.container}>Loading...<div className={styles.spinner}></div></div>;
   }
@@ -92,6 +99,7 @@ export default function Projects() {
 
   const { projectImages, info, dateStarted, dateFinished, live } = projectData;
 
+  //next.js (Explain)
   const renderRichText = (infoArray: Array<{ type: string; children: Child[] }>) => {
     return infoArray.map((paragraph, index) => (
       <div key={index}>
