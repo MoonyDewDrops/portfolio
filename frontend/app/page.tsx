@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Image from 'next/image';
 
+//this makes it so the state can hold the data, without this it don know wtf its holding so it causes error on line 32
 interface HomePageData {
   welkom: string;
   welkomDescription: string;
@@ -36,18 +37,23 @@ export default function Home() {
     const fetchHomeData = async () => {
       try {
         const response = await axios.get(
+          //this gets the data from strapi using the api link. The populate things is to make sure it delivers all the data
+          //that might be inside different components n stuff like that
           "http://localhost:1337/api/homepages?populate[headerImages][populate]=*&populate=headerNames"
         );
         const fetchedData = response.data.data[0];
         setHomeData({
+          //this is where we set the data into all the names u see on the left most. Those names are what we get them by.
           welkom: fetchedData.welkom,
           welkomDescription: fetchedData.welkomDescription,
           headerImages: {
+            //this is getting the stuff inside the component. The || null makes it so that if nothing shows up it dont tweak out (break or worse idk)
             overMij: fetchedData.headerImages?.overMij || null,
             mijnWerk: fetchedData.headerImages?.mijnWerk || null,
             contact: fetchedData.headerImages?.contact || null,
           },
           headerNames: {
+            //Here i do || "name of thing". This is also so if data aint there, we have a temporary thing!! :)
             home: fetchedData.headerNames?.home || "Home",
             overMij: fetchedData.headerNames?.overMij || "Over mij",
             mijnWerk: fetchedData.headerNames?.mijnWerk || "Mijn werk",
@@ -67,6 +73,7 @@ export default function Home() {
 
   if (loading) {
     return (
+      //loading state my absolute beloved i think it turned out very pretty <3
         <div className={styles.container}>
           Loading...
           <div className={styles.spinner}></div>
@@ -78,6 +85,7 @@ export default function Home() {
     return <div>{error}</div>;
   }
 
+  //ah nah they got the homepage data- *gets shot*
   if (!homeData) {
     return <div>Homepage data is missing or unavailable</div>;
   }
@@ -98,7 +106,10 @@ export default function Home() {
 
         <div className={styles.imageGallery}>
           <a href="/aboutMe" className={styles.imageContainer}>
+          {/* using <Image> to load in the images like a boss :3*/}
             <Image
+            //The source was kinda tricky for me but ik that this makes it so we have multiple tries, i dont have a fallback image yet
+            //for if it doesn't work
               src={headerImages?.overMij?.url ? `http://localhost:1337${headerImages.overMij.url}` : "/fallback-image.jpg"}
               alt={headerNames.overMij}
               className={`${styles.portfolioImage} ${styles.firstImage}`}
